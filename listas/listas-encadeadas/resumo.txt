@@ -1,0 +1,45 @@
+- LISTAS ENCADEADAS -
+*sequência encadeda de elemetos
+*cada elemento é um nó na lista
+* listas é representada pelo primeiro nó
+* o ponteiro do ultimo nó é NULL
+
+Ex:
+
+struct lista{
+    int inf;
+    int *prox;
+}
+typedeaf lista *Lista
+
+Lista l = rebe o ponteiro para o primeir nó da lista
+
+->inserção no início
+insere (Lista* l, int i)
+{
+Lista* novo = (Lista*) malloc(sizeof(Lista));
+novo->info = i;
+novo->prox = l; // vai apontar para o que estava na primeria posiçaõ da fila
+return novo;
+// não precisa das free no l, pq nãoesta realocando tudo para outr memória
+//está apenas alocando para um novo nó
+}
+
+->imprimir toda listas
+imprime_lista(Lista l){
+    Lista p;
+    for(p = l;p != NULL; p = p->prox){
+        printf("info: %d", p->info);
+    }
+}
+
+->buscas
+busc_lista(Lista l, int v){
+    Lista p;
+    for(p = l/ p != NULL; p = p->prox){
+        if(p->info == v){
+            return p;
+        }
+    }
+    return NULL
+}
