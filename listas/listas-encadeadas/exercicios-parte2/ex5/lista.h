@@ -21,5 +21,6 @@ void lst_libera(Lista l);
 
 Lista inverte(Lista l);
 
+int igual(Lista l1, Lista l2);
 
 #endif

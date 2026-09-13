@@ -17,7 +17,9 @@ void lst_imprimi(Lista l);
 
 Lista lst_busca(Lista l, int v);
 
-bool lst_libera(Lista l);
+void lst_libera(Lista l);
+
+Lista separa(Lista l, int n);
 
 
 #endif

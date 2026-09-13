@@ -21,5 +21,11 @@ void lst_libera(Lista l);
 
 Lista inverte(Lista l);
 
+Lista insere_final(Lista l, int v);
+
+int igual(Lista l1, Lista l2);
+
+Lista copia(Lista l);
+
 
 #endif

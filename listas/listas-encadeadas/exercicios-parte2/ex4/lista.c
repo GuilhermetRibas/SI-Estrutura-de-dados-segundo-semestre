@@ -27,15 +27,18 @@ Lista lst_inserer_inicio(Lista l, int v)
 
 Lista lst_insere_ordenado(Lista l, int v)
 {
-    if (l == NULL)
-        return NULL;
     Lista novo = malloc(sizeof(struct lista));
-    if (novo == NULL)
-        return NULL;
+    if (novo == NULL)return NULL;
+
     novo->inf = v;
+
+    if(l == NULL){
+        novo->prox = l;
+        return novo;
+    }
     Lista anterior = NULL;
     Lista p = l;
-    while (p->inf != v && p != NULL)
+    while (p->inf < v && p != NULL)
     {
         anterior = p;
         p = p->prox;
@@ -89,8 +92,6 @@ Lista lst_remove_no(Lista l, int v)
 
 void lst_imprimi(Lista l)
 {
-    if (l == NULL)
-        return NULL;
     Lista p;
     for (p = l; p != NULL; p = p->prox)
     {
@@ -113,10 +114,9 @@ Lista lst_busca(Lista l, int v)
     return NULL;
 }
 
-bool lst_libera(Lista l)
+void lst_libera(Lista l)
 {
-    if (l == NULL)
-        return false;
+
     Lista atual = l;
     Lista prox;
     while (atual != NULL)
@@ -125,5 +125,21 @@ bool lst_libera(Lista l)
         free(atual);
         atual = prox;
     }
-    return true;
+
+}
+
+Lista inverte(Lista l){
+    if(l  == NULL){
+        return l;
+    }
+    Lista antecessor = NULL;
+    Lista atual = l;
+    Lista proximo;
+    while(atual != NULL){
+        proximo = atual->prox;
+        atual->prox = antecessor;  
+        antecessor = atual;
+        atual = proximo;
+    }
+    return antecessor;
 }

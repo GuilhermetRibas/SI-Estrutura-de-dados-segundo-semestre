@@ -28,17 +28,17 @@ Lista lst_inserer_inicio(Lista l, int v)
 Lista lst_insere_ordenado(Lista l, int v)
 {
     Lista novo = malloc(sizeof(struct lista));
-    if (novo == NULL)
-        return NULL;
+    if (novo == NULL)return NULL;
+
     novo->inf = v;
+
     if(l == NULL){
-        novo->prox = NULL;
+        novo->prox = l;
         return novo;
     }
     Lista anterior = NULL;
-
     Lista p = l;
-    while (p->inf != v && p != NULL)
+    while (p != NULL && p->inf < v)
     {
         anterior = p;
         p = p->prox;
@@ -116,7 +116,7 @@ Lista lst_busca(Lista l, int v)
 
 void lst_libera(Lista l)
 {
-    
+
     Lista atual = l;
     Lista prox;
     while (atual != NULL)
@@ -125,18 +125,39 @@ void lst_libera(Lista l)
         free(atual);
         atual = prox;
     }
-    
+
 }
 
-
-Lista separa(Lista l, int n){
-    if(l == NULL)return NULL;
-    Lista p = l;
-    while (p->inf != n)
-    {
-        p = p->prox; //aqui esta a ocorencia de n
+Lista inverte(Lista l){
+    if(l  == NULL){
+        return l;
     }
-    Lista sublista = p->prox;
-    p->prox = NULL;
-    return sublista;
+    Lista antecessor = NULL;
+    Lista atual = l;
+    Lista proximo;
+    while(atual != NULL){
+        proximo = atual->prox;
+        atual->prox = antecessor;  
+        antecessor = atual;
+        atual = proximo;
+    }
+    return antecessor;
+}
+
+int igual(Lista l1, Lista l2){
+
+    Lista pl1 = l1;
+    Lista pl2 = l2;
+    
+    while(pl1 != NULL && pl2 != NULL){
+        if(pl1->inf != pl2->inf){
+            return 0;
+        }
+        pl1 = pl1->prox;
+        pl2 = pl2->prox;
+    }
+    if(pl1 == NULL && pl2 == NULL){
+        return 1;
+    }
+    return 0;
 }
