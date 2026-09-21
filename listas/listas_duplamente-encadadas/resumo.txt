@@ -1,0 +1,137 @@
+ - Listas Duplamente encadeadas -
+
+->possuem um ponteiro para o anterior e proximo elemento em cada nó
+
+//estrutura
+struct lista{
+    int inf;
+    struct lista *prox;
+    strucut lista *ant;
+};
+typedeaf struct lista *Lista
+
+//criar(){
+    return NULL;
+}
+
+
+//inserção
+inser_inicio(Lista l, int v){
+    Lista novo = malloc(sizeof(struct lista));
+    if(novo == NULL)return NULL;
+
+    novo->inf = v;
+    novo->prox =l;
+    novo->ant = NULL;
+    if(l != NULL){
+        l->ant = novo;
+    }
+    return novo;
+}
+
+insere_final(Lista l, int v){
+    Lista novo = malloc(sizeof(struct lista));
+    if(novo == NULL)return l;
+
+    novo->inf = v;
+    novo->prox = NULL;
+
+    if(l == NULL){
+        novo->ant = NULL;
+        return novo;
+    }
+
+    lista p = l;
+    while(p->prox != NULL){
+        p = p->prox;
+    }
+    p->prox = novo;
+    novo->ant = p;
+
+    return l;
+}
+
+
+
+insere_ordenado(Lista l, int v){
+
+    Lista p = l;
+
+    while(p != NULL && p->inf > v){
+        p = p->prox;
+    }
+
+    if(p == NULL){
+     return insere_final(l,v);
+    }
+
+    if(p->ant == NULL){
+      return inser_inicio(l,n);
+    }
+
+    Lista novo = malloc(sizeof(struct lista));
+    if(novo == NULL)return l;
+    novo->inf = v;
+    novo->ant = p->ant;
+    novo->prox = p;
+    p->ant->prox = novo;
+    p->ant = novo;
+    return l;
+
+}
+
+
+
+//busca
+busca(Lista l, int v){
+    Lista p;
+    for(p = l; p != NULL; p = p->prox){
+        if(p->inf == v){
+            return p;
+        }
+    }
+    return NULL;
+}
+
+//impressão
+imprimir(Lista l){
+    Lista p;
+    for(p =l; p != NULL; p = p->prox){
+        printf("%d", p->inf);
+    }
+}
+
+
+
+//remoção 
+remove(Lista l, int v){
+    Lista remove = busca(l,v);
+    if(remove == NULL)return l;
+    
+    if(remove == l){
+        l = remove->prox;
+    }else{
+    remove->ant->prox = remove->prox;
+    }
+    if(remove->prox != NULL){
+        remove->prox->ant = remove->ant
+    }
+    free(p);
+    return l;
+}
+
+//liberar
+liberar(Lista l){
+    Lista t;
+    Lista p = l;
+    while(p != NULL){
+        t = p->prox;
+        free(p);
+        p = t;
+    }
+}
+
+
+
+
+
