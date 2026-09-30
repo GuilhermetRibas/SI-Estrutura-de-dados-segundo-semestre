@@ -104,14 +104,14 @@ Lista* l_revove_fim(Lista* l){
 }
 
 Lista* l_revove_dado(Lista* l, int v){
+    if(l == NULL){
+        return l;
+    }
     Lista* ant = NULL;
     Lista* p = l;
     while(p != NULL && p->dado != v){
         ant = p;
         p = p->prox;
-    }
-    if(p == NULL){
-        return l;
     }
     if(ant == NULL){
         l = p->prox;

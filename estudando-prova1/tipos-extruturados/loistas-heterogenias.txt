@@ -1,0 +1,87 @@
+- Listas de dados estruturados - Heterogênias
+
+
+struct retangulo{
+    float b;
+    float h;
+}
+
+struct triangulo{
+    float b;
+    float h;
+}
+struct circulo{
+    float r;
+}
+
+#define RET 0
+#define TRI 1
+#define CIR 2
+
+typedef struct lista Lista;
+struct lista{
+    int tipo;
+    Lista* prox;
+    void* inf;
+}
+
+Lista* aloca_no(){
+    lista* novo = (Lista*)malloc(Lista);
+    if(nov = NULL)return NULL;
+}
+
+Lista* aloca_ret(float b, float b){
+    Lista* novo = aloca_no;
+
+    retangulo r = (retangulo*)malloc(sizeof(retangulo));
+    r->b = b; r->h = h;
+
+    novo->tipo = RET;
+    novo->info = r;
+    p->prox = NULL;
+    retunr p;
+}
+
+Lista* aloca_tri(floar b, float h){
+    Lista* novo = aloca_no();
+
+    triangulo* tri = (triangulo*)malloc(sizeof(triangulo));
+    if(tri == NULL) return NULL;
+    tri->b = b;
+    tri->h = h;
+
+    novo->tipo = TRI;
+    novo->info = tri;
+    novo->prox = NULL;
+    return novo;
+}
+
+Lista* aloca_circ(floar r){
+    Lista* novo = aloca_no();
+
+    circulo* cir = (circulo*)malloc(sizeof(circulo));
+    if(cir == NULL)return NULL;
+
+    novo->tipo = CIR;
+    novo->info = cir;
+    novo->prox = NULL;
+    retunr novo;
+}
+
+void imprime_lista(Lista* l){
+
+    for(Lista* p = l; p != NULL; p = p->prox){
+        if(p->tipo == RET ){
+            int area = p->info->b * p->info->h;
+            printf("%d", area);
+        }
+        if(p->tipo == TRI ){
+            int area = (p->info->b * p->info->h)/2;
+            printf("%d", area);
+        }
+         if(p->tipo == CIR ){
+            int area = 3.14 * l->info->c * l->info->c;
+            printf("%d", area);
+        }
+    }
+}

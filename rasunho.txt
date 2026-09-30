@@ -1,0 +1,18 @@
+///Remover de uma posição baseado no valor que passa pra função
+
+
+
+
+
+
+
+
+///liberar 
+
+
+
+
+
+
+//adicionar em ordem ->  maior para menor ou maior para menor
+

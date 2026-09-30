@@ -1,0 +1,70 @@
+- Lista de tipos estruturados - Homogênias
+
+
+///versão 1 -> acessar lista 
+struct lista{
+    int b;
+    int h;
+    Lista* prox;
+}
+typedef struct lista Lista
+
+Lista* cria(){
+    return null;
+}
+
+Lista* aloca(float b, float h){
+    Lista* novo = (Lista*)malloc(sizeof(Lista));
+    if(novo == NULL)return NULL;
+    novo->b = b;
+    novo->h = h;
+    return novo;
+}
+
+///versao 2 -> so acessar struct de tipo de dado
+
+struct ret{
+    int b;
+    int h;
+};
+
+struct lista{
+    ret retangulo;
+    Lista* prox;
+}
+
+Lista* aloca(int b,int h){
+    Lista* novo = (Lista*)malloc(sizeof(Lista));
+    if(novo == NULL)return NULL;
+
+    novo->retangulo.b = b;
+    novo->retangulo.h = h;
+    return novo;
+}
+
+///versão 3 -> tem que alocar struct para tip de dado
+
+struct retangulo{
+    int b;
+    int h;
+};
+
+struct lista{
+    retangulo* ret;
+    Lista* prox;
+}
+
+Lista* aloca(int b,int h){
+    Lista* novo = (Lista*)malloc(sizeof(Lista));
+    if(novo == NULL)return NULL;
+
+    retangulo *r = (retangulo*)malloc(sizeof(retangulo));
+    if(novo->retangulo == NULL)return NULL;
+
+    r.b = b
+    r.h = h;
+    novo->ret = r;
+    p->prox = NULL;
+    return novo; 
+
+}

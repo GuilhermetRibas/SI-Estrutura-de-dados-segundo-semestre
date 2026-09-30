@@ -120,8 +120,6 @@ Lista *l_revove_fim(Lista *l);
 
 Lista *l_revove_dado(Lista *l, int v)
 {
-    if (l == NULL)
-        return l;
     Lista *p = l;
     while (p->prox != NULL && p->dado != v)
     {
