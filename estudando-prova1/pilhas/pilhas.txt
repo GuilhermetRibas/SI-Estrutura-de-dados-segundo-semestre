@@ -1,0 +1,111 @@
+- Pilhas -
+
+PUSH -> empilha    -> ter espaço para inserir 
+POP  -> desempilha -> não podeestar vazia
+
+-> Implementação com vetor ///////////////////
+
+#define N = 3;
+
+struct pilha{
+    int n;
+    float vet[n];
+}
+typedef struct pilha Pilha;
+
+Pilha* p_cria(){
+    Pilha* p = (Pilha*)malloc(sizeof(Pilha));
+    p->n = 0;
+    retunr p;
+}
+
+void p_push(Pilha* p, float v){
+    if (p->n == N) {
+    printf("Capacidade da pilha estourou.\n");
+    exit(1);
+    }
+    p->vet[p->n] = v;
+    p->n++;
+}
+
+float p_pop(Pilha* p){
+    if(p == NULL){
+        exit(1);
+    }
+    float v = p->vet[p->n-1];
+    p->n--;
+    retun v;
+}
+
+void p_libera(Pilha* p){
+    free(p);
+}
+
+
+-> Implementação com listas ///////////////////
+
+struct lista {
+float info;
+struct lista* prox;
+};
+
+typedef struct lista Lista;
+
+struct pilha {
+Lista* prim; 
+};
+
+typedef struct pilha Pilha;
+
+Pilha* p_cria(){
+    Pilha* p = (Pilha*)malloc(sizeof(Pilha));
+    p->prim = NULL;
+    return p;
+}
+
+void p_push(Pilha* p, float v){
+    Lista* novo = (Lista*)malloc(Lista);
+    novo->info = v;
+    novo->prox = p->prim;
+    p->prim = novo;
+}
+
+float p_pop(Pilha* p){
+    if(p == NULL)exit(1);
+    Lista* no = p->prim;
+    float v = no->info;
+    p->prim = no->prox;
+    free(no); 
+    retun v; 
+}
+
+void p_libera(Pilha* p){
+    Lista* no = p->prim;
+    while(no != NULL){
+        Lista* t = no->prox;
+        free(no);
+        no = t;
+    }
+    free(p);    
+}
+
+
+
+
+
+
+pila.h /////////////////////////////
+
+typedef struct pilha Pilha;
+
+Pilha* pilha_cria (void);
+
+void pilha_push (Pilha* p, float v);
+
+float pilha_pop (Pilha* p);
+
+int pilha_vazia (Pilha* p);
+
+void pilha_libera (Pilha* p);
+
+///////////////////////////////////

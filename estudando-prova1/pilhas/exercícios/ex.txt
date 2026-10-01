@@ -1,0 +1,61 @@
+typedef struct lista Lista
+struc lista{
+    int info;
+    Lista *prox;
+};
+
+struct pilha{
+    Lista *prim;
+};
+
+typedefstruct pilha Pilha;
+
+Pilha* l_cria(){
+    Pilha* p = (pilha*)malloc(Pilha);
+    p->prim = NULL;
+    retun p;
+}
+
+void p_push(pilha* p, int v){
+    Lista* novo = (Lista*)malloc(Lista);
+    novo->info = v;
+    novo->prox = p->prim;
+    p->prim = novo;
+}
+
+int p_pop(Pilha* p){
+    if(p == NULL)exit(1);
+    Lista* no = p->prim;
+    int v = no->info;
+    p->prim - no->prox;
+    free(no);
+    return v;
+}
+
+///////////////////////////////////////////////
+
+struct pilha{
+    int n;
+    int ve[n];
+};
+typedef struct pilha Pilha;
+
+Pilha* p_cria(){
+    Pilha* p = (Pilha*)malloc(Pilha);
+    p->n = 0;
+    retun p;
+}
+
+void p_push(Pilha* p, int v){
+    if(p->n == N)exit(1);
+
+    p->vet[p->n] = v;
+    p->n++;
+}
+
+int p_pop(Pilha* p){
+    if(p == NULL)exit(1);
+    int v = p->vet[p->n - 1];
+    p->n--;
+    retun v;
+}

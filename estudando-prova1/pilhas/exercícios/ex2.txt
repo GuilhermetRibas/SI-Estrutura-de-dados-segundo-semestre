@@ -1,0 +1,54 @@
+typedef struct lista Lista
+
+struc lista{
+    int info;
+    Lista *prox;
+};
+
+struct pilha{
+    Lista *prim;
+};
+
+typedefstruct pilha Pilha;
+
+Pilha* l_cria(){
+    Pilha* p = (pilha*)malloc(Pilha);
+    p->prim = NULL;
+    retun p;
+}
+
+void p_push(pilha* p, int v){
+    Lista* novo = (Lista*)malloc(Lista);
+    novo->info = v;
+    novo->prox = p->prim;
+    p->prim = novo;
+}
+
+int p_pop(Pilha* p){
+    if(p == NULL)exit(1);
+    Lista* no = p->prim;
+    int v = no->info;
+    p->prim - no->prox;
+    free(no);
+    return v;
+}
+
+int p_tam(Pilha* p){
+    int cont = 0;
+    for(Lista* no = p->prim; no != NULL; no = no->prox){
+        cont++;
+    }
+    return cont;
+}
+
+bool p_igual(Pilha* p1, char palavra[50]){
+   
+ bool verifica = true;
+ for(int i = 0; i < strlen(palavra); i++){
+    char topo = p_pop(p);
+    if(topo != palavr[i]){
+        verifica = false;
+    }
+    retun verifica
+ }
+}

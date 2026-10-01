@@ -1,0 +1,51 @@
+#define ALUNO 0
+#define PROFESSOR 1
+struct professor
+{
+int codigo;
+char nome[50];
+float salario;
+};
+typedef struct professor Professor;
+struct aluno
+{
+int matricula;
+char nome[50];
+};
+typedef struct aluno Aluno;
+
+struct listaHet
+{
+int tipo;
+void* info;
+struct listaHet* prox;
+};
+typedef struct listaHet ListaHet;
+
+Lista* l_insere_professor(int codigo, char nome[50], float salário){
+    Lista* novo = (Lista*)malloc(sizeof(Lista));
+    if(novo == NULL)retunr NULL;
+    Professor* p =(professor*)malloc(sizeof(Professor));
+
+    p->codigo = codigo;
+    strcpy(p->nome,nome);
+    p->salario = salario;
+
+    novo->tipo = PROFESSOR;
+    novo->info = p;
+    novo->prox = l;
+    return novo;
+}
+
+Lista* l_insere_aluno(int matricula,char nome[50]){
+     Lista* novo = (Lista*)malloc(sizeof(Lista));
+    if(novo == NULL)retunr NULL;
+    Aluno* a = (Aluno*)malloc(sizeof(Aluno));
+    a->matricula = matricula;
+    strcpy(a->nome,nome);
+
+    novo->tipo = ALUNO;
+    novo->inf = a;
+    novo->prox = l;
+    retun novo;
+}

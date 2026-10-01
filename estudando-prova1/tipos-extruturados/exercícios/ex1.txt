@@ -1,0 +1,22 @@
+struct lista
+{
+int matricula;
+char nome[50];
+struct lista* prox;
+};
+typedef struct lista Lista;
+
+Lista* l_insere(Lista* l, int matricula, char nome[50]){
+    Lista* novo = (Lista*)malloc(sizeof(Lista));
+    if(novo == NULL)retunr NULL;
+
+    novo->matricula = matricula;
+    strcpy(novo->nome,nome)
+    novo->prox = l;
+    return novo;
+}
+
+void l_imprime(Lista* l){
+    if(l == NULL)return l;
+    for()
+}

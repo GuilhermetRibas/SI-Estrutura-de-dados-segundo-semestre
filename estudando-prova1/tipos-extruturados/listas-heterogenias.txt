@@ -38,7 +38,7 @@ Lista* aloca_ret(float b, float b){
 
     novo->tipo = RET;
     novo->info = r;
-    p->prox = NULL;
+    p->prox = l;
     retunr p;
 }
 
@@ -52,7 +52,7 @@ Lista* aloca_tri(floar b, float h){
 
     novo->tipo = TRI;
     novo->info = tri;
-    novo->prox = NULL;
+    novo->prox = l;
     return novo;
 }
 
@@ -64,12 +64,12 @@ Lista* aloca_circ(floar r){
 
     novo->tipo = CIR;
     novo->info = cir;
-    novo->prox = NULL;
+    novo->prox = l;
     retunr novo;
 }
 
 void imprime_lista(Lista* l){
-
+    if(l = NULL)return;
     for(Lista* p = l; p != NULL; p = p->prox){
         if(p->tipo == RET ){
             int area = p->info->b * p->info->h;
