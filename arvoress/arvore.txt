@@ -1,0 +1,47 @@
+- Àrvore -
+
+-> Binária: cada nó tem 0,1 ou 2 nós filhos
+            raiz
+        no         no    -> sub-arvores
+    no      no   no   no -> folhas
+
+-> Estrutura e implementação
+
+typedeaf struct arv Arv;
+
+struct arv{
+    char inf;
+    Arv *esq;
+    Arv *dir;
+}
+
+Arv* arv_criavazia(){
+    return NULL;
+}
+
+Arv* arv_cria(char c, Arv* sad, Arv* sae){
+    Arv* no = (Arv*)malloc(sizeof(Arv));
+    if(no == NULL)return no;
+    no->inf = c;
+    no->esq = sae;
+    no->dir = sad;
+    return no;
+}
+
+Arv* arv_libera(Arv* a){
+    if(a != NULL){
+        arv_libre(a->esq);
+        arv_libre(a->dir);
+        free(a);
+    }
+    return NULL;
+}
+
+void arv_imprime(Arv* a){
+    if(a != NULL){
+        printf("%c", a->info);
+        arv_imprime(a->sqr);
+        arv_imprime(a->dir);
+    }
+}
+
