@@ -77,34 +77,22 @@ int hps_remover(Heaps *h, int *saida)
     downheap(h, 0);
     return 1;
 }
-
 void hps_imprime(Heaps *h)
 {
     if (h == NULL)
         return;
-
+    if (h->n == 0)
+    {
+        printf("Heap vazio.\n");
+        return;
+    }
     for (int i = 0; i < h->n; i++)
     {
-        int esq = 2 * i + 1;
-        int dir = 2 * i + 2;
-
-        printf("[%d] valor: %d", i, h->dados[i]);
-
-        if (i > 0)
-            printf(" | pai: %d", h->dados[(i - 1) / 2]);
-        else
-            printf(" | pai: vazio");
-
-        if (esq < h->n)
-            printf(" | esq: %d", h->dados[esq]);
-        else
-            printf(" | esq: vazio");
-
-        if (dir < h->n)
-            printf(" | dir: %d", h->dados[dir]);
-        else
-            printf(" | dir: vazio");
-
+        int esq = 2 * i + 1, dir = 2 * i + 2;
+        printf("No %d: filho esq: ", h->dados[i]);
+        if (esq < h->n) printf("%d", h->dados[esq]); else printf("vazio");
+        printf(", filho dir: ");
+        if (dir < h->n) printf("%d", h->dados[dir]); else printf("vazio");
         printf("\n");
     }
 }
